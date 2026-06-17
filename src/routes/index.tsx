@@ -12,6 +12,7 @@ import productWeb from "@/assets/product-web.jpg";
 import productAi from "@/assets/product-ai.jpg";
 import productWeb3 from "@/assets/product-web3.jpg";
 import pcvenLogo from "@/assets/pcven-logo.jpg.asset.json";
+import MapSection from "@/components/MapSection";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -57,6 +58,7 @@ function Home() {
       <About />
       <Products />
       <Distribution />
+      <MapSection />
       <Testimonials />
       <CtaBand />
       <Gallery />
@@ -75,6 +77,7 @@ function Nav() {
     ["Nosotros", "#nosotros"],
     ["Productos", "#productos"],
     ["Distribución", "#distribucion"],
+    ["Ubicaciones", "#ubicaciones"],
     ["Galería", "#galeria"],
     ["Contacto", "#contacto"],
   ];
