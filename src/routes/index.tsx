@@ -557,8 +557,8 @@ function Footer() {
 function WhatsAppFloat() {
   return (
     <a href={WHATSAPP} target="_blank" rel="noopener" aria-label="WhatsApp"
-      className="fixed bottom-5 right-5 z-50 grid place-items-center h-14 w-14 rounded-full text-white shadow-2xl hover:scale-110 transition-transform"
-      style={{ background: "linear-gradient(135deg, #25D366, #128C7E)", boxShadow: "0 10px 30px oklch(0.45 0.06 165 / 0.5)" }}>
+      className="fixed z-50 grid place-items-center h-14 w-14 rounded-full text-white shadow-2xl hover:scale-110 transition-transform"
+      style={{ background: "linear-gradient(135deg, #25D366, #128C7E)", boxShadow: "0 10px 30px oklch(0.45 0.06 165 / 0.5)", right: "max(1rem, env(safe-area-inset-right))", bottom: "max(1rem, env(safe-area-inset-bottom))" }}>
       <MessageCircle className="size-7" />
       <span className="absolute inline-flex h-full w-full rounded-full bg-[#25D366] opacity-40 animate-ping" />
     </a>
