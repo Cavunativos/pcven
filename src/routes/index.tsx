@@ -11,6 +11,7 @@ import aboutImg from "@/assets/about-team.jpg";
 import productWeb from "@/assets/product-web.jpg";
 import productAi from "@/assets/product-ai.jpg";
 import productWeb3 from "@/assets/product-web3.jpg";
+import pcvenLogo from "@/assets/pcven-logo.jpg.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -80,11 +81,15 @@ function Nav() {
   return (
     <header className="fixed inset-x-0 top-0 z-40 backdrop-blur-xl bg-[oklch(0.18_0.02_40/0.78)] border-b border-white/10">
       <div className="container-x flex h-16 items-center justify-between gap-4">
-        <a href="#inicio" className="flex items-center gap-2 text-[oklch(0.97_0.015_75)]">
-          <span className="grid h-9 w-9 place-items-center rounded-xl" style={{ background: "var(--gradient-gold)" }}>
-            <span className="font-display font-extrabold text-[oklch(0.18_0.02_40)]">P</span>
-          </span>
-          <span className="font-display font-bold tracking-wide">PCVEN<span className="text-[color:var(--gold)]">.</span>CA</span>
+        <a href="#inicio" className="flex items-center gap-3 text-[oklch(0.97_0.015_75)]">
+          <img
+            src={pcvenLogo.url}
+            alt="PCVEN, C.A. logo"
+            width={40}
+            height={40}
+            className="h-10 w-10 rounded-full object-cover ring-1 ring-white/15 shadow-[0_0_18px_oklch(0.78_0.13_75/0.35)]"
+          />
+          <span className="font-display font-bold tracking-wide leading-none">PCVEN<span className="text-[color:var(--gold)]">.</span>CA</span>
         </a>
         <nav className="hidden lg:flex items-center gap-7">
           {links.map(([l, h]) => (
