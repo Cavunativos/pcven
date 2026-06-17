@@ -11,6 +11,7 @@ import aboutImg from "@/assets/about-team.jpg";
 import productWeb from "@/assets/product-web.jpg";
 import productAi from "@/assets/product-ai.jpg";
 import productWeb3 from "@/assets/product-web3.jpg";
+import pcvenLogo from "@/assets/pcven-logo.jpg.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
