@@ -58,6 +58,7 @@ function Home() {
       <About />
       <Products />
       <Distribution />
+      <MapSection />
       <Testimonials />
       <CtaBand />
       <Gallery />
