@@ -297,8 +297,16 @@ function Distribution() {
             </div>
           </div>
           <div data-reveal className="relative">
-            <div className="aspect-square rounded-full bg-white/5 border border-white/15 grid place-items-center float" style={{ boxShadow: "var(--shadow-glow)" }}>
-              <Globe2 className="size-48 sm:size-64 text-[color:var(--gold)] opacity-80" />
+            <div className="aspect-square rounded-full grid place-items-center float relative" style={{ boxShadow: "var(--shadow-glow)" }}>
+              <div className="absolute inset-0 rounded-full bg-[radial-gradient(circle_at_30%_30%,oklch(0.65_0.12_220/0.35),transparent_60%)] blur-2xl" aria-hidden />
+              <img
+                src={earthImg}
+                alt="Planeta Tierra — cobertura global PCVEN"
+                width={1024}
+                height={1024}
+                loading="lazy"
+                className="relative w-[88%] h-[88%] object-contain drop-shadow-[0_30px_60px_oklch(0.18_0.03_40/0.55)]"
+              />
             </div>
             {["LATAM", "EE.UU.", "EUROPA", "ASIA"].map((c, idx) => (
               <span key={c} className="absolute rounded-full bg-[color:var(--coffee)] text-[color:var(--beige)] px-4 py-1.5 text-xs font-semibold border border-white/20"
