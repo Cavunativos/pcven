@@ -77,6 +77,7 @@ function Nav() {
     ["Nosotros", "#nosotros"],
     ["Productos", "#productos"],
     ["Distribución", "#distribucion"],
+    ["Ubicaciones", "#ubicaciones"],
     ["Galería", "#galeria"],
     ["Contacto", "#contacto"],
   ];
