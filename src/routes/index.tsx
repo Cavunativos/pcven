@@ -1,10 +1,12 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
+import { z } from "zod";
 import {
   Globe2, Rocket, Sparkles, Headphones, ShieldCheck, Code2, Cpu, Link2,
   MessageCircle, Mail, Phone, Instagram, MapPin, Clock, ChevronDown,
   ArrowRight, CheckCircle2, Star,
 } from "lucide-react";
+
 
 import heroImg from "@/assets/hero-pcven.jpg";
 import aboutImg from "@/assets/about-team.jpg";
@@ -84,17 +86,20 @@ function Nav() {
   ];
   return (
     <header className="fixed inset-x-0 top-0 z-40 backdrop-blur-xl bg-[oklch(0.18_0.02_40/0.78)] border-b border-white/10">
-      <div className="container-x flex h-16 items-center justify-between gap-4">
-        <a href="#inicio" className="flex items-center gap-3 text-[oklch(0.97_0.015_75)]">
+      <div className="container-x flex h-16 items-center justify-between gap-2 sm:gap-4">
+        <a href="#inicio" className="flex min-w-0 items-center gap-2 sm:gap-3 text-[oklch(0.97_0.015_75)]">
           <img
             src={pcvenLogo.url}
             alt="PCVEN, C.A. logo"
             width={40}
             height={40}
-            className="h-10 w-10 rounded-full object-cover ring-1 ring-white/15 shadow-[0_0_18px_oklch(0.78_0.13_75/0.35)]"
+            loading="eager"
+            decoding="async"
+            className="h-9 w-9 sm:h-10 sm:w-10 shrink-0 rounded-full object-cover ring-1 ring-white/15 shadow-[0_0_18px_oklch(0.78_0.13_75/0.35)]"
           />
-          <span className="font-display font-bold tracking-wide leading-none">PCVEN<span className="text-[color:var(--gold)]">.</span>CA</span>
+          <span className="truncate font-display font-bold tracking-wide leading-none">PCVEN<span className="text-[color:var(--gold)]">.</span>CA</span>
         </a>
+
         <nav className="hidden lg:flex items-center gap-7">
           {links.map(([l, h]) => (
             <a key={h} href={h} className="text-sm text-[oklch(0.95_0.02_75/0.85)] hover:text-[color:var(--gold)] transition-colors">{l}</a>
@@ -129,16 +134,16 @@ function Hero() {
       <div className="absolute inset-0" style={{ background: "var(--gradient-hero)" }} />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,oklch(0.45_0.06_165/0.35),transparent_60%)]" />
 
-      <div className="container-x relative z-10 py-24">
+      <div className="container-x relative z-10 py-20 sm:py-24">
         <div className="max-w-3xl text-[oklch(0.97_0.015_75)]">
           <div data-reveal className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-4 py-1.5 text-xs uppercase tracking-widest backdrop-blur">
             <Sparkles className="size-3.5 text-[color:var(--gold)]" />
             <span>Venezuela · Cobertura internacional</span>
           </div>
-          <h1 data-reveal className="mt-6 font-display text-4xl sm:text-5xl lg:text-7xl font-extrabold leading-[1.05]">
+          <h1 data-reveal className="mt-6 font-display text-3xl sm:text-5xl lg:text-7xl font-extrabold leading-[1.08] break-words">
             Diseño internacional de <span className="bg-clip-text text-transparent" style={{ backgroundImage: "var(--gradient-gold)" }}>plataformas web</span> con Blockchain e IA de alta calidad.
           </h1>
-          <p data-reveal className="mt-6 text-lg sm:text-xl text-[oklch(0.95_0.02_75/0.85)] max-w-2xl">
+          <p data-reveal className="mt-6 text-base sm:text-xl text-[oklch(0.95_0.02_75/0.85)] max-w-2xl">
             Soluciones y asesoramiento para negocios, corporaciones y distribuidores. Construimos productos digitales que escalan, persuaden y convierten.
           </p>
           <div data-reveal className="mt-9 flex flex-wrap gap-3">
@@ -147,20 +152,21 @@ function Hero() {
             </a>
             <a href="#productos" className="btn-ghost">Ver Productos</a>
           </div>
-          <div data-reveal className="mt-12 grid grid-cols-3 gap-6 max-w-lg">
+          <div data-reveal className="mt-12 grid grid-cols-3 gap-3 sm:gap-6 max-w-lg">
             {[
               ["+25", "Años de trayectoria"],
               ["100%", "Atención directa"],
               ["24/7", "Soporte global"],
             ].map(([n, l]) => (
-              <div key={l}>
-                <div className="font-display text-3xl font-bold text-[color:var(--gold)]">{n}</div>
-                <div className="text-xs text-[oklch(0.95_0.02_75/0.7)] mt-1">{l}</div>
+              <div key={l} className="min-w-0">
+                <div className="font-display text-2xl sm:text-3xl font-bold text-[color:var(--gold)]">{n}</div>
+                <div className="text-[11px] sm:text-xs text-[oklch(0.95_0.02_75/0.7)] mt-1">{l}</div>
               </div>
             ))}
           </div>
         </div>
       </div>
+
       <a href="#valor" aria-label="Bajar" className="absolute bottom-6 left-1/2 -translate-x-1/2 text-white/70 animate-bounce">
         <ChevronDown className="size-6" />
       </a>
@@ -199,7 +205,7 @@ function About() {
     <section id="nosotros" className="section bg-[color:var(--beige)]/50">
       <div className="container-x grid lg:grid-cols-2 gap-12 items-center">
         <div data-reveal className="relative">
-          <img src={aboutImg} alt="Equipo de ingenieros PCVEN" width={1280} height={960} loading="lazy" className="rounded-3xl shadow-2xl" />
+          <img src={aboutImg} alt="Equipo de ingenieros PCVEN" width={1280} height={960} loading="lazy" decoding="async" className="rounded-3xl shadow-2xl" />
           <div className="absolute -bottom-6 -right-6 hidden sm:block rounded-2xl bg-[color:var(--coffee)] text-[color:var(--beige)] p-6 max-w-xs" style={{ boxShadow: "var(--shadow-elevated)" }}>
             <div className="font-display text-3xl font-bold text-[color:var(--gold)]">1997</div>
             <div className="text-sm mt-1 opacity-90">Construyendo el futuro digital desde Venezuela.</div>
@@ -248,7 +254,7 @@ function Products() {
           {list.map(({ img, icon: Icon, t, d, tag }) => (
             <article key={t} data-reveal className="group overflow-hidden rounded-3xl bg-card border border-border hover:border-[color:var(--accent)] transition-all hover:-translate-y-2" style={{ boxShadow: "var(--shadow-soft)" }}>
               <div className="relative aspect-[4/3] overflow-hidden">
-                <img src={img} alt={t} width={1024} height={1024} loading="lazy" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                <img src={img} alt={t} width={1024} height={1024} loading="lazy" decoding="async" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
                 <span className="absolute top-4 left-4 inline-flex items-center gap-1.5 rounded-full bg-white/95 px-3 py-1 text-xs font-semibold text-[color:var(--coffee)]">
                   <Star className="size-3 text-[color:var(--gold)] fill-current" /> {tag}
@@ -305,8 +311,10 @@ function Distribution() {
                 width={1024}
                 height={1024}
                 loading="lazy"
+                decoding="async"
                 className="relative w-[88%] h-[88%] object-contain drop-shadow-[0_30px_60px_oklch(0.18_0.03_40/0.55)]"
               />
+
             </div>
             {["LATAM", "EE.UU.", "EUROPA", "ASIA"].map((c, idx) => (
               <span key={c} className="absolute rounded-full bg-[color:var(--coffee)] text-[color:var(--beige)] px-4 py-1.5 text-xs font-semibold border border-white/20"
@@ -363,7 +371,7 @@ function Testimonials() {
 function CtaBand() {
   return (
     <section className="relative overflow-hidden">
-      <img src={heroImg} alt="" aria-hidden width={1920} height={600} loading="lazy" className="absolute inset-0 w-full h-full object-cover" />
+      <img src={heroImg} alt="" aria-hidden width={1920} height={600} loading="lazy" decoding="async" className="absolute inset-0 w-full h-full object-cover" />
       <div className="absolute inset-0 bg-[oklch(0.18_0.02_40/0.85)]" />
       <div className="relative container-x py-20 sm:py-28 text-center text-[oklch(0.97_0.015_75)]">
         <h2 data-reveal className="font-display text-3xl sm:text-5xl font-bold max-w-3xl mx-auto leading-tight">
@@ -396,7 +404,7 @@ function Gallery() {
         <div className="mt-10 grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
           {imgs.map((src, i) => (
             <div key={i} data-reveal className={`group relative overflow-hidden rounded-2xl ${i === 0 || i === 4 ? "lg:row-span-2 aspect-[3/4] lg:aspect-auto" : "aspect-square"}`}>
-              <img src={src} alt={`Caso ${i + 1}`} loading="lazy" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+              <img src={src} alt={`Caso ${i + 1}`} loading="lazy" decoding="async" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
             </div>
           ))}
@@ -438,8 +446,48 @@ function Faq() {
   );
 }
 
+const contactSchema = z.object({
+  name: z.string().trim().min(2, "Ingresa tu nombre completo").max(100, "Máximo 100 caracteres"),
+  phone: z.string().trim().min(7, "Teléfono inválido").max(25, "Máximo 25 caracteres"),
+  email: z.string().trim().max(255, "Máximo 255 caracteres").email("Correo inválido").or(z.literal("")),
+  message: z.string().trim().min(10, "Cuéntanos un poco más (mín. 10 caracteres)").max(1000, "Máximo 1000 caracteres"),
+});
+type ContactValues = z.infer<typeof contactSchema>;
+type ContactErrors = Partial<Record<keyof ContactValues, string>>;
+
 function Contact() {
+  const [values, setValues] = useState<ContactValues>({ name: "", phone: "", email: "", message: "" });
+  const [errors, setErrors] = useState<ContactErrors>({});
   const [sent, setSent] = useState(false);
+
+  const update = (k: keyof ContactValues) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setValues((v) => ({ ...v, [k]: e.target.value }));
+    if (errors[k]) setErrors((er) => ({ ...er, [k]: undefined }));
+  };
+
+  function onSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    const parsed = contactSchema.safeParse(values);
+    if (!parsed.success) {
+      const fieldErrors: ContactErrors = {};
+      for (const issue of parsed.error.issues) {
+        const key = issue.path[0] as keyof ContactValues;
+        if (!fieldErrors[key]) fieldErrors[key] = issue.message;
+      }
+      setErrors(fieldErrors);
+      return;
+    }
+    const { name, phone, email, message } = parsed.data;
+    const body =
+      `Hola PCVEN, soy ${name}.\n` +
+      `📱 Tel/WhatsApp: ${phone}\n` +
+      (email ? `✉️ Correo: ${email}\n` : "") +
+      `\n${message}`;
+    const url = `https://wa.me/584126893075?text=${encodeURIComponent(body)}`;
+    setSent(true);
+    window.open(url, "_blank", "noopener,noreferrer");
+  }
+
   return (
     <section id="contacto" className="section bg-background">
       <div className="container-x grid lg:grid-cols-2 gap-12">
@@ -473,20 +521,30 @@ function Contact() {
           </div>
         </div>
 
-        <form data-reveal onSubmit={(e) => { e.preventDefault(); setSent(true); }} className="rounded-3xl bg-card border border-border p-6 sm:p-8" style={{ boxShadow: "var(--shadow-soft)" }}>
+        <form data-reveal onSubmit={onSubmit} noValidate className="rounded-3xl bg-card border border-border p-6 sm:p-8" style={{ boxShadow: "var(--shadow-soft)" }}>
           <h3 className="font-display text-2xl font-bold">Cuéntanos tu idea</h3>
-          <p className="mt-1 text-sm text-muted-foreground">Te respondemos en menos de 24h hábiles.</p>
+          <p className="mt-1 text-sm text-muted-foreground">Al enviar abrimos WhatsApp con tu mensaje listo.</p>
 
           <div className="mt-6 space-y-4">
-            <Field label="Nombre completo" name="name" required />
-            <Field label="Teléfono / WhatsApp" name="phone" type="tel" required />
-            <Field label="Correo electrónico" name="email" type="email" />
+            <Field label="Nombre completo" name="name" value={values.name} onChange={update("name")} error={errors.name} required />
+            <Field label="Teléfono / WhatsApp" name="phone" type="tel" value={values.phone} onChange={update("phone")} error={errors.phone} required />
+            <Field label="Correo electrónico (opcional)" name="email" type="email" value={values.email} onChange={update("email")} error={errors.email} />
             <div>
-              <label className="text-sm font-medium">Mensaje</label>
-              <textarea required rows={4} className="mt-1.5 w-full rounded-xl border border-input bg-background px-4 py-3 text-sm outline-none focus:border-[color:var(--accent)] focus:ring-2 focus:ring-[color:var(--accent)]/20 transition" placeholder="Cuéntanos qué necesitas..." />
+              <label htmlFor="message" className="text-sm font-medium">Mensaje *</label>
+              <textarea
+                id="message"
+                name="message"
+                rows={4}
+                value={values.message}
+                onChange={update("message")}
+                aria-invalid={!!errors.message}
+                className={`mt-1.5 w-full rounded-xl border bg-background px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-[color:var(--accent)]/20 transition ${errors.message ? "border-destructive focus:border-destructive" : "border-input focus:border-[color:var(--accent)]"}`}
+                placeholder="Cuéntanos qué necesitas..."
+              />
+              {errors.message && <p className="mt-1 text-xs text-destructive">{errors.message}</p>}
             </div>
             <button type="submit" className="btn-primary w-full">
-              {sent ? "¡Recibido! Te contactamos pronto" : "Enviar mensaje"} <ArrowRight className="size-4" />
+              {sent ? "¡Enviado! Abrimos WhatsApp" : "Enviar por WhatsApp"} <ArrowRight className="size-4" />
             </button>
             <p className="text-xs text-center text-muted-foreground">Atención directa vía WhatsApp · +58 412-6893075</p>
           </div>
@@ -496,14 +554,29 @@ function Contact() {
   );
 }
 
-function Field({ label, name, type = "text", required }: { label: string; name: string; type?: string; required?: boolean }) {
+function Field({
+  label, name, type = "text", required, value, onChange, error,
+}: {
+  label: string; name: string; type?: string; required?: boolean;
+  value: string; onChange: (e: React.ChangeEvent<HTMLInputElement>) => void; error?: string;
+}) {
   return (
     <div>
       <label htmlFor={name} className="text-sm font-medium">{label}{required && " *"}</label>
-      <input id={name} name={name} type={type} required={required} className="mt-1.5 w-full rounded-xl border border-input bg-background px-4 py-3 text-sm outline-none focus:border-[color:var(--accent)] focus:ring-2 focus:ring-[color:var(--accent)]/20 transition" />
+      <input
+        id={name}
+        name={name}
+        type={type}
+        value={value}
+        onChange={onChange}
+        aria-invalid={!!error}
+        className={`mt-1.5 w-full rounded-xl border bg-background px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-[color:var(--accent)]/20 transition ${error ? "border-destructive focus:border-destructive" : "border-input focus:border-[color:var(--accent)]"}`}
+      />
+      {error && <p className="mt-1 text-xs text-destructive">{error}</p>}
     </div>
   );
 }
+
 
 function Footer() {
   return (
