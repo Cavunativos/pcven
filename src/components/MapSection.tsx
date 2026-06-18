@@ -274,10 +274,25 @@ export default function MapSection() {
               </div>
             )}
             {error && (
-              <div className="absolute inset-0 grid place-items-center bg-[color:var(--beige)]/90 text-[color:var(--coffee)] text-sm px-6 text-center">
-                {error}
+              <div className="absolute inset-0 grid place-items-center bg-[color:var(--beige)]/95 px-6">
+                <div className="max-w-sm w-full rounded-2xl bg-card border border-border p-6 text-center shadow-[var(--shadow-elevated)]">
+                  <div className="mx-auto grid h-12 w-12 place-items-center rounded-full bg-[color:var(--beige)] text-[color:var(--forest)]">
+                    <MapPin className="size-6" />
+                  </div>
+                  <h4 className="mt-4 font-display text-lg font-bold text-[color:var(--coffee)]">Mapa no disponible</h4>
+                  <p className="mt-2 text-sm text-muted-foreground break-words">{error}</p>
+                  <a
+                    href="https://www.google.com/maps"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn-primary mt-5 w-full justify-center"
+                  >
+                    <MapPin className="size-4" /> Abrir en Google Maps
+                  </a>
+                </div>
               </div>
             )}
+
           </div>
 
           {/* Side panel */}
