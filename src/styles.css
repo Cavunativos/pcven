@@ -79,17 +79,17 @@
 
 
 .dark {
-  --background: oklch(0.16 0.02 40);
+  --background: oklch(0.14 0 0);
   --foreground: oklch(0.95 0.02 75);
-  --card: oklch(0.22 0.03 40);
+  --card: oklch(0.2 0 0);
   --card-foreground: oklch(0.95 0.02 75);
-  --popover: oklch(0.22 0.03 40);
+  --popover: oklch(0.2 0 0);
   --popover-foreground: oklch(0.95 0.02 75);
   --primary: oklch(0.93 0.03 75);
-  --primary-foreground: oklch(0.18 0.02 40);
-  --secondary: oklch(0.28 0.04 45);
+  --primary-foreground: oklch(0.17 0 0);
+  --secondary: oklch(0.26 0 0);
   --secondary-foreground: oklch(0.95 0.02 75);
-  --muted: oklch(0.28 0.04 45);
+  --muted: oklch(0.26 0 0);
   --muted-foreground: oklch(0.75 0.03 75);
   --accent: oklch(0.55 0.08 165);
   --accent-foreground: oklch(0.97 0.015 75);
