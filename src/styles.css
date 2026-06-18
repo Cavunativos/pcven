@@ -128,7 +128,7 @@
   padding: 0.875rem 1.75rem;
   border-radius: 9999px;
   background: var(--gradient-gold);
-  color: oklch(0.18 0.02 40);
+  color: oklch(0.17 0 0);
   font-weight: 600;
   box-shadow: var(--shadow-soft);
   transition: transform .25s ease, box-shadow .25s ease, filter .25s ease;
