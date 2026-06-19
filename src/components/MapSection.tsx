@@ -40,6 +40,7 @@ function loadMaps(): Promise<void> {
 }
 
 export default function MapSection() {
+  const sectionRef = useRef<HTMLElement>(null);
   const mapDivRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const mapRef = useRef<any>(null);
@@ -47,6 +48,7 @@ export default function MapSection() {
   const suggestionsBoxRef = useRef<HTMLDivElement>(null);
   const sessionTokenRef = useRef<any>(null);
 
+  const [shouldLoad, setShouldLoad] = useState(false);
   const [ready, setReady] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [query, setQuery] = useState("");
@@ -54,8 +56,26 @@ export default function MapSection() {
   const [selected, setSelected] = useState<SelectedPlace | null>(null);
   const [satellite, setSatellite] = useState(true);
 
-  // Init map
+  // Lazy-load: only fetch Google Maps script when the section enters the viewport
   useEffect(() => {
+    const el = sectionRef.current;
+    if (!el || shouldLoad) return;
+    const io = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((e) => e.isIntersecting)) {
+          setShouldLoad(true);
+          io.disconnect();
+        }
+      },
+      { rootMargin: "200px" }
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, [shouldLoad]);
+
+  // Init map after script loads
+  useEffect(() => {
+    if (!shouldLoad) return;
     let cancelled = false;
     loadMaps()
       .then(async () => {
@@ -78,7 +98,7 @@ export default function MapSection() {
     return () => {
       cancelled = true;
     };
-  }, []);
+  }, [shouldLoad]);
 
   // Toggle satellite/roadmap
   useEffect(() => {
