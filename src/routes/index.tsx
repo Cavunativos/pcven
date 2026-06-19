@@ -1,12 +1,10 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
-import { z } from "zod";
 import {
   Globe2, Rocket, Sparkles, Headphones, ShieldCheck, Code2, Cpu, Link2,
-  MessageCircle, Mail, Phone, Instagram, MapPin, Clock, ChevronDown,
-  ArrowRight, CheckCircle2, Star,
+  MessageCircle, Mail, Instagram,
+  ArrowRight, CheckCircle2, Star, ChevronDown,
 } from "lucide-react";
-import { toast } from "sonner";
 
 
 import heroImg from "@/assets/hero-pcven.jpg";
@@ -17,6 +15,7 @@ import productWeb3 from "@/assets/product-web3.jpg";
 import pcvenLogo from "@/assets/pcven-logo.jpg.asset.json";
 import earthImg from "@/assets/earth-globe.png";
 import MapSection from "@/components/MapSection";
+import Contact from "@/components/Contact";
 
 export const Route = createFileRoute("/")({
   head: () => ({
