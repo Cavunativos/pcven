@@ -6,6 +6,7 @@ import {
   MessageCircle, Mail, Phone, Instagram, MapPin, Clock, ChevronDown,
   ArrowRight, CheckCircle2, Star,
 } from "lucide-react";
+import { toast } from "sonner";
 
 
 import heroImg from "@/assets/hero-pcven.jpg";
@@ -459,6 +460,7 @@ function Contact() {
   const [values, setValues] = useState<ContactValues>({ name: "", phone: "", email: "", message: "" });
   const [errors, setErrors] = useState<ContactErrors>({});
   const [sent, setSent] = useState(false);
+  const [sending, setSending] = useState(false);
 
   const update = (k: keyof ContactValues) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setValues((v) => ({ ...v, [k]: e.target.value }));
@@ -467,6 +469,7 @@ function Contact() {
 
   function onSubmit(e: React.FormEvent) {
     e.preventDefault();
+    if (sending) return;
     const parsed = contactSchema.safeParse(values);
     if (!parsed.success) {
       const fieldErrors: ContactErrors = {};
@@ -484,8 +487,11 @@ function Contact() {
       (email ? `✉️ Correo: ${email}\n` : "") +
       `\n${message}`;
     const url = `https://wa.me/584126893075?text=${encodeURIComponent(body)}`;
+    setSending(true);
     setSent(true);
+    toast.success("Mensaje enviado", { description: "Abrimos WhatsApp con tu mensaje listo." });
     window.open(url, "_blank", "noopener,noreferrer");
+    setTimeout(() => setSending(false), 3000);
   }
 
   return (
@@ -543,8 +549,8 @@ function Contact() {
               />
               {errors.message && <p className="mt-1 text-xs text-destructive">{errors.message}</p>}
             </div>
-            <button type="submit" className="btn-primary w-full">
-              {sent ? "¡Enviado! Abrimos WhatsApp" : "Enviar por WhatsApp"} <ArrowRight className="size-4" />
+            <button type="submit" disabled={sending} className="btn-primary w-full disabled:opacity-60 disabled:cursor-not-allowed">
+              {sending ? "Enviando..." : sent ? "¡Enviado! Abrimos WhatsApp" : "Enviar por WhatsApp"} <ArrowRight className="size-4" />
             </button>
             <p className="text-xs text-center text-muted-foreground">Atención directa vía WhatsApp · +58 412-6893075</p>
           </div>
