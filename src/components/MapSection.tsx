@@ -210,7 +210,7 @@ export default function MapSection() {
     : `${WHATSAPP_BASE}?text=${encodeURIComponent("Hola PCVEN, quiero registrar un cliente")}`;
 
   return (
-    <section id="ubicaciones" className="section bg-background">
+    <section ref={sectionRef} id="ubicaciones" className="section bg-background">
       <div className="container-x">
         <div className="max-w-3xl">
           <span className="text-xs uppercase tracking-[0.25em] text-[color:var(--forest)] font-semibold">Ubicaciones & clientes</span>
