@@ -6,6 +6,7 @@ import {
   MessageCircle, Mail, Phone, Instagram, MapPin, Clock, ChevronDown,
   ArrowRight, CheckCircle2, Star,
 } from "lucide-react";
+import { toast } from "sonner";
 
 
 import heroImg from "@/assets/hero-pcven.jpg";
