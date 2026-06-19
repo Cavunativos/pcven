@@ -549,8 +549,8 @@ function Contact() {
               />
               {errors.message && <p className="mt-1 text-xs text-destructive">{errors.message}</p>}
             </div>
-            <button type="submit" className="btn-primary w-full">
-              {sent ? "¡Enviado! Abrimos WhatsApp" : "Enviar por WhatsApp"} <ArrowRight className="size-4" />
+            <button type="submit" disabled={sending} className="btn-primary w-full disabled:opacity-60 disabled:cursor-not-allowed">
+              {sending ? "Enviando..." : sent ? "¡Enviado! Abrimos WhatsApp" : "Enviar por WhatsApp"} <ArrowRight className="size-4" />
             </button>
             <p className="text-xs text-center text-muted-foreground">Atención directa vía WhatsApp · +58 412-6893075</p>
           </div>
