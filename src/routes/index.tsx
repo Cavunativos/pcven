@@ -136,36 +136,42 @@ function Hero() {
 
       <div className="container-x relative z-10 py-20 sm:py-24">
         <div className="max-w-3xl text-[oklch(0.97_0.015_75)]">
-          <div data-reveal className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-4 py-1.5 text-xs uppercase tracking-widest backdrop-blur">
+          <div data-reveal className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-3.5 py-1.5 text-[11px] sm:text-xs uppercase tracking-[0.2em] backdrop-blur">
             <Sparkles className="size-3.5 text-[color:var(--gold)]" />
             <span>Venezuela · Cobertura internacional</span>
           </div>
-          <h1 data-reveal className="mt-6 font-display text-3xl sm:text-5xl lg:text-7xl font-extrabold leading-[1.08] break-words">
-            Diseño internacional de <span className="bg-clip-text text-transparent" style={{ backgroundImage: "var(--gradient-gold)" }}>plataformas web</span> con Blockchain e IA de alta calidad.
+          <h1 data-reveal className="mt-5 font-display text-[2.1rem] xs:text-4xl sm:text-5xl lg:text-7xl font-extrabold leading-[1.05] tracking-tight">
+            Diseño internacional de <span className="bg-clip-text text-transparent" style={{ backgroundImage: "var(--gradient-gold)" }}>plataformas web</span> con Blockchain e IA.
           </h1>
-          <p data-reveal className="mt-6 text-base sm:text-xl text-[oklch(0.95_0.02_75/0.85)] max-w-2xl">
-            Soluciones y asesoramiento para negocios, corporaciones y distribuidores. Construimos productos digitales que escalan, persuaden y convierten.
+          <p data-reveal className="mt-5 text-[15px] sm:text-lg lg:text-xl text-[oklch(0.95_0.02_75/0.88)] max-w-2xl leading-relaxed">
+            Productos digitales que <strong className="text-white">escalan, persuaden y convierten</strong>. Asesoría gratuita y propuesta clara en menos de 24 horas.
           </p>
-          <div data-reveal className="mt-9 flex flex-wrap gap-3">
-            <a href={WHATSAPP} target="_blank" rel="noopener" className="btn-primary">
-              Solicitar Cotización <ArrowRight className="size-4" />
+          <div data-reveal className="mt-7 flex flex-col sm:flex-row flex-wrap gap-3">
+            <a href={WHATSAPP} target="_blank" rel="noopener" className="btn-primary w-full sm:w-auto">
+              Cotiza Gratis en 24 h <ArrowRight className="size-4" />
             </a>
-            <a href="#productos" className="btn-ghost">Ver Productos</a>
+            <a href="#productos" className="btn-ghost w-full sm:w-auto">Ver Productos</a>
           </div>
-          <div data-reveal className="mt-12 grid grid-cols-3 gap-3 sm:gap-6 max-w-lg">
+          <ul data-reveal className="mt-5 flex flex-wrap gap-x-5 gap-y-2 text-[12px] sm:text-sm text-[oklch(0.95_0.02_75/0.85)]">
+            {["Respuesta en menos de 2 h", "Sin compromiso", "Pago por hitos"].map((x) => (
+              <li key={x} className="inline-flex items-center gap-1.5"><CheckCircle2 className="size-4 text-[color:var(--gold)]" />{x}</li>
+            ))}
+          </ul>
+          <div data-reveal className="mt-10 grid grid-cols-3 gap-4 sm:gap-6 max-w-lg">
             {[
               ["+25", "Años de trayectoria"],
               ["100%", "Atención directa"],
               ["24/7", "Soporte global"],
             ].map(([n, l]) => (
               <div key={l} className="min-w-0">
-                <div className="font-display text-2xl sm:text-3xl font-bold text-[color:var(--gold)]">{n}</div>
-                <div className="text-[11px] sm:text-xs text-[oklch(0.95_0.02_75/0.7)] mt-1">{l}</div>
+                <div className="font-display text-[1.6rem] sm:text-3xl font-bold text-[color:var(--gold)] leading-none">{n}</div>
+                <div className="text-[11px] sm:text-xs text-[oklch(0.95_0.02_75/0.75)] mt-1.5 leading-tight">{l}</div>
               </div>
             ))}
           </div>
         </div>
       </div>
+
 
       <a href="#valor" aria-label="Bajar" className="absolute bottom-6 left-1/2 -translate-x-1/2 text-white/70 animate-bounce">
         <ChevronDown className="size-6" />
@@ -228,8 +234,9 @@ function About() {
               <li key={x} className="flex gap-3"><CheckCircle2 className="size-5 shrink-0 text-[color:var(--accent)] mt-0.5" /><span>{x}</span></li>
             ))}
           </ul>
-          <a href="#contacto" className="mt-8 inline-flex btn-primary">Hablemos de tu proyecto <ArrowRight className="size-4" /></a>
+          <a href="#contacto" className="mt-8 inline-flex btn-primary">Agenda tu asesoría gratis <ArrowRight className="size-4" /></a>
         </div>
+
       </div>
     </section>
   );
@@ -374,20 +381,21 @@ function CtaBand() {
       <img src={heroImg} alt="" aria-hidden width={1920} height={600} loading="lazy" decoding="async" className="absolute inset-0 w-full h-full object-cover" />
       <div className="absolute inset-0 bg-[oklch(0.18_0.02_40/0.85)]" />
       <div className="relative container-x py-20 sm:py-28 text-center text-[oklch(0.97_0.015_75)]">
-        <h2 data-reveal className="font-display text-3xl sm:text-5xl font-bold max-w-3xl mx-auto leading-tight">
-          ¿Listo para convertir tu concepto en una web de <span className="text-[color:var(--gold)]">alta calidad</span>?
+        <h2 data-reveal className="font-display text-[1.8rem] sm:text-5xl font-bold max-w-3xl mx-auto leading-[1.1] tracking-tight">
+          Convierte tu idea en una web que <span className="text-[color:var(--gold)]">venda 24/7</span>.
         </h2>
-        <p data-reveal className="mt-5 opacity-85 max-w-xl mx-auto">Asesoría inicial gratuita. Hablamos hoy mismo por WhatsApp y diseñamos juntos la mejor ruta.</p>
-        <div data-reveal className="mt-8 flex flex-wrap justify-center gap-3">
-          <a href={WHATSAPP} target="_blank" rel="noopener" className="btn-primary">
-            <MessageCircle className="size-5" /> Contáctanos por WhatsApp
+        <p data-reveal className="mt-5 opacity-90 max-w-xl mx-auto text-[15px] sm:text-base">Asesoría gratuita por WhatsApp · Propuesta clara en menos de 24 h · Sin compromiso.</p>
+        <div data-reveal className="mt-8 flex flex-col sm:flex-row flex-wrap justify-center gap-3">
+          <a href={WHATSAPP} target="_blank" rel="noopener" className="btn-primary w-full sm:w-auto">
+            <MessageCircle className="size-5" /> Hablar ahora por WhatsApp
           </a>
-          <a href="#contacto" className="btn-ghost">Enviar formulario</a>
+          <a href="#contacto" className="btn-ghost w-full sm:w-auto">Enviar formulario</a>
         </div>
       </div>
     </section>
   );
 }
+
 
 function Gallery() {
   const imgs = [productWeb, productAi, productWeb3, aboutImg, heroImg, productAi];
