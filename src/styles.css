@@ -100,6 +100,7 @@
 
 @layer base {
   * { border-color: var(--color-border); }
+  html { scroll-behavior: smooth; }
   html, body {
     max-width: 100%;
     overflow-x: clip;
@@ -109,9 +110,13 @@
     color: var(--color-foreground);
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
   }
-  h1, h2, h3, h4, h5 { font-family: var(--font-display); letter-spacing: -0.02em; }
+  h1, h2, h3, h4, h5 { font-family: var(--font-display); letter-spacing: -0.025em; text-wrap: balance; }
+  p { text-wrap: pretty; }
+  :focus-visible { outline: 2px solid var(--color-ring); outline-offset: 3px; border-radius: 6px; }
 }
+
 
 @utility container-x {
   width: 100%;
@@ -125,14 +130,17 @@
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  padding: 0.875rem 1.75rem;
+  padding: 0.85rem 1.4rem;
   border-radius: 9999px;
   background: var(--gradient-gold);
   color: oklch(0.17 0 0);
-  font-weight: 600;
+  font-weight: 700;
+  letter-spacing: -0.01em;
   box-shadow: var(--shadow-soft);
   transition: transform .25s ease, box-shadow .25s ease, filter .25s ease;
+  @media (min-width: 640px) { padding: 0.95rem 1.85rem; }
   &:hover { transform: translateY(-2px); box-shadow: var(--shadow-elevated); filter: brightness(1.05); }
+  &:active { transform: translateY(0); }
 }
 
 @utility btn-ghost {
@@ -140,20 +148,23 @@
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  padding: 0.875rem 1.75rem;
+  padding: 0.85rem 1.4rem;
   border-radius: 9999px;
   border: 1px solid oklch(1 0 0 / 0.4);
   color: var(--color-primary-foreground);
-  font-weight: 500;
+  font-weight: 600;
   backdrop-filter: blur(6px);
   transition: all .25s ease;
+  @media (min-width: 640px) { padding: 0.95rem 1.85rem; }
   &:hover { background: oklch(1 0 0 / 0.1); border-color: oklch(1 0 0 / 0.7); }
 }
 
 @utility section {
-  padding-block: 5rem;
+  padding-block: 3.75rem;
+  @media (min-width: 640px) { padding-block: 5rem; }
   @media (min-width: 768px) { padding-block: 7rem; }
 }
+
 
 @utility reveal {
   opacity: 0;
